@@ -13,8 +13,6 @@ for(int i=0; i<s.length(); i++) {
 		else {
 			break;
 		}
-		
-		
 	}
 	System.out.println(s.charAt(i)+">>>>"+count);
 

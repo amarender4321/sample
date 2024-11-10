@@ -7,7 +7,7 @@ public class NumberOfAccuranceOfChar {
 
 		String s = "welcome to bengaluru and welcome to BEL layout";
 		String[] sp = s.split(" ");
-		LinkedHashSet<String> set=new LinkedHashSet<>();
+		LinkedHashSet<String> set=new LinkedHashSet<String>();
 		for (int i = 0; i < sp.length; i++) 
 		{
 		set.add(sp[i]);

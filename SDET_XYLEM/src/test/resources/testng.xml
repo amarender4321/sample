@@ -3,9 +3,9 @@
 <suite name="V11 automation Suite">
   <test  name="V11 TestScripts">
     <classes>
-	 <class name="com.v11.qa.testcases.Register"/>
-      <class name="com.v11.qa.testcases.Login2"/>
-       <class name="com.v11.qa.testcases.Search"/>
+	 <class name="com.v11.qa.testcases.RegisterTest"/>
+      <class name="com.v11.qa.testcases.LoginTest"/>
+       <class name="com.v11.qa.testcases.SearchTest"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

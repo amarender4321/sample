@@ -4,6 +4,7 @@ package JAVA_programs;
 public class CountEvenAndOdd {
 
 	public static void main(String[] args) {
+		
 int num =23447777;
 int even_count=0;
 int odd_count=0;

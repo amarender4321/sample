@@ -6,93 +6,93 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class RegisterPage {
-	
+
 	WebDriver driver;
-	
-	
+
+
 	//Object
 	@FindBy(css="#input-firstname")
 	private WebElement firstNameFiled;
-	
+
 	@FindBy(css="#input-lastname")
 	private WebElement lastNameFiled;
-	
+
 	@FindBy(css="#input-email")
 	private WebElement emailAddressFiled;
-	
+
 	@FindBy(css="#input-telephone")
 	private WebElement telephoneFiled;
-	
+
 	@FindBy(css="#input-password")
 	private WebElement passwordFiled;
-	
+
 	@FindBy(css="#input-confirm")
 	private WebElement passwordConfirmFiled;
-	
+
 	@FindBy(name="agree")
 	private WebElement privacyPolicyFiled;
-	
+
 	@FindBy(xpath="//input[@value='Continue']")
 	private WebElement continueButton;
-	
-	
+
+
 	@FindBy(xpath="//input[@name='newsletter'][@value='1']")
-    private WebElement yesNewsletterOption;
-	
+	private WebElement yesNewsletterOption;
+
 	@FindBy(css=".alert ")
 	private WebElement duplicateEmailAddressWarning;
-	
+
 	@FindBy(css=".alert")
 	private WebElement privacyPoicyWarning;
-	
+
 	@FindBy(xpath="//input[@id='input-firstname']/following-sibling::div")
 	private WebElement fistNameWarning;
-	
+
 	@FindBy(xpath="//input[@id='input-lastname']/following-sibling::div")
 	private WebElement lastNameWarning;
-	
+
 	@FindBy(xpath="//input[@id='input-email']/following-sibling::div")
 	private WebElement emailWaring;
 
 	@FindBy(xpath="//input[@id='input-telephone']/following-sibling::div")
 	private WebElement telephoneWaring;
-	
+
 
 	@FindBy(xpath="//input[@id='input-password']/following-sibling::div")
 	private WebElement passwordWaring;
-	
-	
+
+
 	public RegisterPage(WebDriver driver) {
 		this.driver=driver;
 		PageFactory.initElements(driver, this);
 	}
-	
+
 	public String retrievePasswordWarning() {
 		String passwordWaringText = passwordWaring.getText();
 		return passwordWaringText;
 	}
-	
+
 	public String retrieveTelephoneWarning() {
 		String telephoneWaringText = telephoneWaring.getText();
 		return telephoneWaringText;
 	}
-	
+
 	public String retrieveEmailWarning() {
 		String emailWaringText = emailWaring.getText();
 		return emailWaringText;
 	}
-	
-	
+
+
 	public String retrevieLastNameWarning() {
 		String lasttNameWaringText = lastNameWarning.getText();
 		return lasttNameWaringText;
 	}
-	
+
 	public String retrevieFirstNameWarning() {
 		String firstNameWaringText = fistNameWarning.getText();
 		return firstNameWaringText;
 	}
-	
+
 	public String retrievePrivacyPolicyWarning() {
 		String privacyPoicyWarningText = privacyPoicyWarning.getText();
 		return privacyPoicyWarningText;
@@ -101,15 +101,15 @@ public class RegisterPage {
 	public void enterFirstName(String fistNameText) {
 		firstNameFiled.sendKeys(fistNameText);
 	}
-	
+
 	public void enterLastName(String lastNameText) {
 		lastNameFiled.sendKeys(lastNameText);
 	}
-	
+
 	public void enterEmailAddress(String emailText) {
 		emailAddressFiled.sendKeys(emailText);
 	}
-	
+
 	public void enterTelephoneNumer(String telephoneText) {
 		emailAddressFiled.sendKeys(telephoneText);
 	}
@@ -119,7 +119,7 @@ public class RegisterPage {
 	public void enterConfirmPassword(String passwordText) {
 		passwordConfirmFiled.sendKeys(passwordText);
 	}
-	
+
 	public void selectPrivacyPolicy() {
 		privacyPolicyFiled.click();
 	}
@@ -127,12 +127,45 @@ public class RegisterPage {
 		continueButton.click();
 	}
 
+	public AccountSuccessPage registerWithMandatoryFields(String fistNameText,String lastNameText,String emailText,String telephoneText,String passwordText) {
+		firstNameFiled.sendKeys(fistNameText);
+		lastNameFiled.sendKeys(lastNameText);
+		emailAddressFiled.sendKeys(emailText);
+		emailAddressFiled.sendKeys(telephoneText);
+		privacyPolicyFiled.click();
+		continueButton.click();
+		return new AccountSuccessPage(driver);
+	}
+
+
+	public AccountSuccessPage registerWithAllFields(String fistNameText,String lastNameText,String emailText,String telephoneText,String passwordText) {
+		firstNameFiled.sendKeys(fistNameText);
+		lastNameFiled.sendKeys(lastNameText);
+		emailAddressFiled.sendKeys(emailText);
+		emailAddressFiled.sendKeys(telephoneText);
+		yesNewsletterOption.click();
+		privacyPolicyFiled.click();
+		continueButton.click();
+		return new AccountSuccessPage(driver);
+	}
+
+
 	public void seletYesNewsleterOption() {
 		yesNewsletterOption.click();
 	}
 	public String retrieveDuplicateEmailAddressWarring() {
-	String	duplicateEmailAddressWarningText	=	duplicateEmailAddressWarning.getText();
+		String	duplicateEmailAddressWarningText	=	duplicateEmailAddressWarning.getText();
 		return duplicateEmailAddressWarningText;
 	}
-	}
 
+	public boolean displayStatusOfWarningMessages(String expectedPrivacyPolicyWarningText,String expectedFirstNameWarning,String expectedLastNameWarningText, String expectedEmailWarningText, String expectedTelephoneWarningText,String expectedPasswordWarningText) {
+
+		boolean privacyPoicyWarningStatus=privacyPoicyWarning.getText().contains(expectedPrivacyPolicyWarningText);
+		boolean fistNameWarningStatus= fistNameWarning.getText().contains(expectedFirstNameWarning);
+		boolean lastNameWarningStatus=  lastNameWarning.getText().contains(expectedLastNameWarningText);
+		boolean emailWaringStatus=emailWaring.getText().contains(expectedEmailWarningText);
+		boolean telephoneWaringStatus=telephoneWaring.getText().contains(expectedTelephoneWarningText);
+		boolean passwordWaringStatus= passwordWaring.getText().contains(expectedPasswordWarningText);
+		return privacyPoicyWarningStatus && fistNameWarningStatus && lastNameWarningStatus && emailWaringStatus &&telephoneWaringStatus && passwordWaringStatus;
+	}
+}

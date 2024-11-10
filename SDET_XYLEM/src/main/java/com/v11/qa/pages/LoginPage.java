@@ -7,6 +7,9 @@ import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage {
 
+	
+
+
 	WebDriver driver;
 
 
@@ -35,10 +38,22 @@ public class LoginPage {
 	public void enterPassword(String passwordText) {
 	passwordFiled.sendKeys(passwordText);
 }
-	public void clickClicOnLoginButton() {
+	public AccountPage clickClicOnLoginButton() {
 		LoginButton.click();
+		return new AccountPage(driver);
 	}
 	
+	public AccountPage login(String emailText,String passwordText) {
+		emailAddressField.sendKeys(emailText);
+		passwordFiled.sendKeys(passwordText);
+		LoginButton.click();
+		return new AccountPage(driver);
+		
+	}
+	
+
+
+
 public String	retriveEmailPasswordNotMatchingWaringMessageText() {
 String warningText	=emailPasswordNotMatchingWaring.getText();
 return warningText;

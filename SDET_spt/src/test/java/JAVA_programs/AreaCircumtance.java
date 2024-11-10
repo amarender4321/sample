@@ -12,6 +12,8 @@ System.out.println("Enter the radius");
 int r=s1.nextInt();
 double c=(pie*r*r);
 System.out.println("The output is "+c);
+
+
 	}
 
 }

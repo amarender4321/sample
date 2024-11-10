@@ -20,6 +20,7 @@ for(Character cha:set) {
 		}
 		
 	}
+	if(count==1);
 	System.out.println(cha+" "+count);
 }
 	}

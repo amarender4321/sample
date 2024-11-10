@@ -3,16 +3,15 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.v11.qa.testcases.Register">
+      <class name="com.v11.qa.testcases.Search">
         <methods>
-          <include name="tearDown"/>
           <include name="setUp"/>
-          <include name="verifyRegistingAccountWithoutFillingDetails"/>
-          <include name="variyRegisteringAnAccountwithMandatoryFields"/>
-          <include name="verifyRegisteringAcountByProvidingAllFileds"/>
-          <include name="verifyRegisteringAcountwithExistingEmail"/>
+          <include name="verifywithNonExistingProduct"/>
+          <include name="verifywithEexistingProduct"/>
+          <include name="teatDown"/>
+          <include name="verifySearchingWithoutProvidingAnyProduct"/>
         </methods>
-      </class> <!-- com.v11.qa.testcases.Register -->
+      </class> <!-- com.v11.qa.testcases.Search -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

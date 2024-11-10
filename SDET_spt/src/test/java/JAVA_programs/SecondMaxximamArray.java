@@ -15,11 +15,10 @@ public class SecondMaxximamArray {
 				 arr[i]=arr[j];
 				 arr[j]=temp;
 			}
-			
 		}
 			if(i==1)break;
 		}
 		System.out.println(arr[1]);
 	}
-
 }
+

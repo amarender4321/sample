@@ -41,6 +41,12 @@ public class HomePage {
 	public void enterProductIntoSearchBoxFiled(String productText) {
 		searchBoxFiled.sendKeys(productText);
 	}
+	
+	public SearchPage searchForButton(String productText) {
+		searchBoxFiled.sendKeys(productText);
+		searchButton.click();
+		return new SearchPage(driver);
+	}
 	public void clickOnMyAccount() {
 		myAccountDropMenu.click();
 	}
@@ -49,7 +55,18 @@ public class HomePage {
 		LoginOption.click();
 	}
 	
-	public void selectRegisterOption() {
+	
+	public void naviageToLoginPage() {
+		myAccountDropMenu.click();
+		LoginOption.click();
+	}
+	public RegisterPage naviageToRegisterPage() {
+		searchButton.click();
 		registerOption.click();
+		return new RegisterPage(driver);
+	}
+	public RegisterPage selectRegisterOption() {
+		registerOption.click();
+		return new RegisterPage(driver);
 	}
 }

@@ -1,33 +1,59 @@
 package JAVA_programs;
 
-import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Test;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class Practice {
 
-	public static void main(String[] args) {
+	@Test
+	public void autoSuggission() throws InterruptedException {
 
-		String s= "amarender amarender";
-	String[]	sp=s.split(" ");
-	LinkedHashSet<String> set = new LinkedHashSet<String>();
-	for(int i=0;i<sp.length;i++) {
-		set.add(sp[i]);
-	}
-for(String word:set) {
-	int count =0;
+		WebDriverManager.chromedriver().setup();
 
-for(int j=0;j<sp.length;j++) {
-	
-if(word.equals(sp[j]))	{
-	count++;
-}
+		WebDriver driver = new ChromeDriver();
+
+		driver.manage().window().maximize();
+
+		//driver.manage().timeouts().implicitlyWait(10, TimeUnit.MILLISECONDS);
+
+
+		driver.get("https://www.google.com");
+
+		WebElement searchBox = driver.findElement(By.name("q"));
+
+		searchBox.sendKeys("java");
 		
-	}
-if(count==1) {
-	System.out.println(word+" "+count);
-}
-}
-	
-	}
+		Thread.sleep(3000);
+
+		//searchBox.sendKeys(Keys.RETURN);
+
+		List<WebElement> suggestionList	=driver.findElements(By.xpath("//div[@class='OBMEnb']/ul/li"));
+
+		System.out.println(suggestionList);
+//		int	 listCount=suggestionList.size();	
+//		System.out.println(listCount);
+		//suggestionList.get(listCount-2).click();
+
+				for(int i=0;i<suggestionList.size(); i++) {
+					if(i==2) {
+		
+						String sp = suggestionList.get(i).getText();
+						
+						
+						System.out.println(sp); 
+		}
+		}	
+		driver.quit();
+	}	
 }
 
 

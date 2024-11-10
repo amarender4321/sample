@@ -20,7 +20,6 @@ public class ReverseStringSamePossition {
 
 }
 
-
 //Reverse the String at same position	
 
 //		String s="i am from india";
